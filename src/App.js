@@ -54,7 +54,7 @@ const linkHoverStyle = {
   backgroundColor: 'rgba(255, 255, 255, 0.2)',
 };
 
-// Optional: You could add `onMouseEnter` and `onMouseLeave` to implement hover effect with inline styles,
+// Optional: You could add onMouseEnter and onMouseLeave to implement hover effect with inline styles,
 // or ideally move to a CSS module or styled-components for cleaner code.
 
 export default App;

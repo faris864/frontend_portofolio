@@ -19,30 +19,45 @@ export default function Contact() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, #667eea, #764ba2)',
-    fontFamily: 'Segoe UI, sans-serif',
+    background: 'linear-gradient(to right,rgb(237, 237, 248),rgb(227, 228, 236))',
+    fontFamily: 'Poppins, sans-serif',
     padding: '2rem'
   };
 
-  const formStyle = {
-    background: 'rgba(255, 255, 255, 0.9)',
-    padding: '2rem',
-    borderRadius: '15px',
-    boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+  const cardStyle = {
+    background: '#fff',
+    borderRadius: '20px',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+    padding: '2.5rem',
     width: '100%',
-    maxWidth: '400px',
+    maxWidth: '460px',
     textAlign: 'center'
+  };
+
+  const avatarStyle = {
+    width: '70px',
+    height: '70px',
+    borderRadius: '50%',
+    marginBottom: '1rem',
+    border: '3px solidrgb(6, 51, 248)',
+    objectFit: 'cover'
+  };
+
+  const titleStyle = {
+    fontSize: '1.8rem',
+    color: '#333',
+    marginBottom: '1rem'
   };
 
   const inputStyle = {
     width: '100%',
-    padding: '0.8rem',
-    margin: '0.5rem 0',
-    border: '2px solid #ddd',
-    borderRadius: '8px',
-    outline: 'none',
+    padding: '0.75rem',
+    margin: '0.6rem 0',
+    borderRadius: '10px',
+    border: '1.5px solid #ccc',
     fontSize: '1rem',
-    transition: 'border-color 0.3s'
+    transition: 'border-color 0.3s',
+    outline: 'none'
   };
 
   const textareaStyle = {
@@ -52,52 +67,57 @@ export default function Contact() {
   };
 
   const buttonStyle = {
-    marginTop: '1rem',
+    marginTop: '1.5rem',
     padding: '0.8rem 2rem',
-    background: 'linear-gradient(90deg, #667eea, #764ba2)',
+    background: 'linear-gradient(to right,rgb(72, 18, 235), #9face6)',
     color: '#fff',
     border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
+    borderRadius: '10px',
     fontSize: '1rem',
+    cursor: 'pointer',
     transition: 'transform 0.2s, box-shadow 0.2s'
   };
 
   return (
     <div style={containerStyle}>
-      <form style={formStyle} onSubmit={handleSubmit}>
-        <h1 style={{marginBottom: '1rem', color: '#333'}}>Contact Me</h1>
+      <form style={cardStyle} onSubmit={handleSubmit}>
+        <img
+          src="/100.jpg"
+          alt="Profile"
+          style={avatarStyle}
+        />
+        <h2 style={titleStyle}>Get in Touch</h2>
         <input
           name="name"
-          placeholder="Name"
+          placeholder="Your Name"
           onChange={handleChange}
           style={inputStyle}
-          onFocus={e => e.target.style.borderColor = '#764ba2'}
-          onBlur={e => e.target.style.borderColor = '#ddd'}
+          onFocus={e => e.target.style.borderColor = '#74ebd5'}
+          onBlur={e => e.target.style.borderColor = '#ccc'}
         />
         <textarea
           name="message"
-          placeholder="Message"
+          placeholder="Write your message..."
           onChange={handleChange}
           style={textareaStyle}
-          onFocus={e => e.target.style.borderColor = '#764ba2'}
-          onBlur={e => e.target.style.borderColor = '#ddd'}
+          onFocus={e => e.target.style.borderColor = '#74ebd5'}
+          onBlur={e => e.target.style.borderColor = '#ccc'}
         />
         <button
           type="submit"
           style={buttonStyle}
           onMouseOver={e => {
             e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(118, 75, 162, 0.4)';
+            e.currentTarget.style.boxShadow = '0 4px 15px rgba(116, 235, 213, 0.4)';
           }}
           onMouseOut={e => {
             e.currentTarget.style.transform = 'none';
             e.currentTarget.style.boxShadow = 'none';
           }}
         >
-          Send
+          Send Message
         </button>
-        {response && <p style={{marginTop: '1rem', color: '#764ba2'}}>{response}</p>}
+        {response && <p style={{ marginTop: '1rem', color: '#4b4b4b' }}>{response}</p>}
       </form>
     </div>
   );

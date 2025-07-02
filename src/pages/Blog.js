@@ -4,24 +4,24 @@ export default function Blog() {
   const articles = [
     {
       id: 1,
-      title: 'Belajar ux dari Nol',
-      excerpt: 'Panduan lengkap memulai belajar ux untuk pemula...',
-      content: 'ux adalah library JavaScript populer untuk membangun UI interaktif. Dimulai dari komponen sederhana lalu berkembang menjadi SPA.',
-      image: '/200.jpg'
+      title: 'kementrian BUMN',
+      excerpt: 'Deskripsi',
+      content: 'BUMN adalah singkatan dari Badan Usaha Milik Negara. Ini adalah perusahaan di mana sebagian besar atau seluruh modalnya dimiliki oleh negara, melalui penyertaan langsung dari kekayaan negara yang dipisahkan. .',
+      image: '/50.jpg'
     },
     {
       id: 2,
-      title: 'Belajar VS Code',
-      excerpt: 'Panduan lengkap memulai belajar VS Code untuk pemula...',
-      content: 'VS Code penting agar pengguna betah.',
-      image: '/400.png'
+      title: 'KAI-kereta Api Indonesia',
+      excerpt: 'Deskripsi',
+      content: 'PT Kereta Api Indonesia (Persero) atau biasa disingkat menjadi KAI, adalah sebuah badan usaha milik negara Indonesia yang bergerak di bidang perkeretaapian.',
+      image: '/60.jpg'
     },
     {
       id: 3,
-      title: 'Belajar Website',
-      excerpt: 'Panduan Belajar website untuk aplikasi modern...',
-      content: 'Belajar website memungkinkan Anda menjalankan Aplikasi.',
-      image: '/546.jpg'
+      title: 'Pertamina',
+      excerpt: 'Deskripsi',
+      content: 'PT Pertamina (Persero) adalah sebuah badan usaha milik negara Indonesia yang bergerak di bidang minyak dan gas.',
+      image: '/70.jpg'
     }
   ];
 
@@ -104,7 +104,7 @@ export default function Blog() {
 
   return (
     <div style={containerStyle}>
-      <h1 style={titleStyle}>Tech Journal</h1>
+      <h1 style={titleStyle}>Pengalaman Kerja </h1>
       <div style={gridStyle}>
         {articles.map(article => (
           <div
@@ -135,7 +135,7 @@ export default function Blog() {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                Read More
+                Lihat
               </button>
             </div>
           </div>

@@ -4,14 +4,24 @@ import axios from 'axios';
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', message: '' });
   const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = e => 
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = e => {
     e.preventDefault();
+    setLoading(true);
     axios.post('http://localhost:5000/api/contact', formData)
-      .then(res => setResponse(res.data.message))
-      .catch(err => console.error(err));
+      .then(res => {
+        setResponse('✅ Pesan berhasil disimpan!');
+        setFormData({ name: '', message: '' }); // reset input
+      })
+      .catch(err => {
+        console.error(err);
+        setResponse('❌ Gagal menyimpan pesan.');
+      })
+      .finally(() => setLoading(false));
   };
 
   const containerStyle = {
@@ -19,7 +29,7 @@ export default function Contact() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(to right,rgb(237, 237, 248),rgb(227, 228, 236))',
+    background: 'linear-gradient(to right, rgb(237, 237, 248), rgb(227, 228, 236))',
     fontFamily: 'Poppins, sans-serif',
     padding: '2rem'
   };
@@ -39,14 +49,8 @@ export default function Contact() {
     height: '70px',
     borderRadius: '50%',
     marginBottom: '1rem',
-    border: '3px solidrgb(6, 51, 248)',
+    border: '3px solid rgb(6, 51, 248)',
     objectFit: 'cover'
-  };
-
-  const titleStyle = {
-    fontSize: '1.8rem',
-    color: '#333',
-    marginBottom: '1rem'
   };
 
   const inputStyle = {
@@ -69,13 +73,20 @@ export default function Contact() {
   const buttonStyle = {
     marginTop: '1.5rem',
     padding: '0.8rem 2rem',
-    background: 'linear-gradient(to right,rgb(72, 18, 235), #9face6)',
+    background: 'linear-gradient(to right, rgb(72, 18, 235), #9face6)',
     color: '#fff',
     border: 'none',
     borderRadius: '10px',
     fontSize: '1rem',
     cursor: 'pointer',
     transition: 'transform 0.2s, box-shadow 0.2s'
+  };
+
+  const responseStyle = {
+    marginTop: '1.5rem',
+    color: response.includes('berhasil') ? 'green' : 'red',
+    fontWeight: '600',
+    fontSize: '1.1rem'
   };
 
   return (
@@ -86,10 +97,13 @@ export default function Contact() {
           alt="Profile"
           style={avatarStyle}
         />
-        <h2 style={titleStyle}>Get in Touch</h2>
+        <h2 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '1rem' }}>
+          Kontak
+        </h2>
         <input
           name="name"
-          placeholder="Your Name"
+          placeholder="Nama..."
+          value={formData.name}
           onChange={handleChange}
           style={inputStyle}
           onFocus={e => e.target.style.borderColor = '#74ebd5'}
@@ -97,7 +111,8 @@ export default function Contact() {
         />
         <textarea
           name="message"
-          placeholder="Write your message..."
+          placeholder="Pesan..."
+          value={formData.message}
           onChange={handleChange}
           style={textareaStyle}
           onFocus={e => e.target.style.borderColor = '#74ebd5'}
@@ -114,10 +129,12 @@ export default function Contact() {
             e.currentTarget.style.transform = 'none';
             e.currentTarget.style.boxShadow = 'none';
           }}
+          disabled={loading}
         >
-          Send Message
+          {loading ? 'Sending...' : 'SIMPAN'}
         </button>
-        {response && <p style={{ marginTop: '1rem', color: '#4b4b4b' }}>{response}</p>}
+
+        {response && <p style={responseStyle}>{response}</p>}
       </form>
     </div>
   );

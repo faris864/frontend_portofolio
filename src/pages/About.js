@@ -31,7 +31,7 @@ export default function About() {
         {/* Left Section - Info */}
         <div style={{ flex: 1, minWidth: '250px' }}>
           <h1 style={{ fontSize: '2.2rem', color: '#333', marginBottom: '1rem' }}>
-            👋 About Me
+            Tentang Saya
           </h1>
           <p style={{ fontSize: '1.1rem', color: '#333', lineHeight: '1.7' }}>
             I'm <strong>Faris Ananto</strong>, a web developer focused on building modern,
@@ -42,23 +42,25 @@ export default function About() {
           <div style={{ marginTop: '1.5rem' }}>
             <h3 style={{ color: '#5e60ce', marginBottom: '0.5rem' }}>Skills:</h3>
             <ul style={{ paddingLeft: '1rem', color: '#444', lineHeight: '1.6' }}>
-              <li>⚛️ React, Next.js</li>
-              <li>🌐 Node.js, Express</li>
-              <li>🎨 Figma, UI/UX Design</li>
-              <li>📱 Mobile-Responsive Development</li>
+              <li> Microsoft word dan excel </li>
+              <li> Editor video </li>
+              <li> Desainer Grafis </li>
             </ul>
           </div>
 
-          <button
+          <a
+            href="/CV-Faris Ananto.jpg"
+            download
             style={{
+              display: 'inline-block',
               marginTop: '2rem',
               padding: '0.75rem 1.8rem',
               background: '#5e60ce',
               color: '#fff',
-              border: 'none',
               borderRadius: '50px',
               fontSize: '1rem',
-              cursor: 'pointer',
+              fontWeight: '500',
+              textDecoration: 'none',
               boxShadow: '0 5px 15px rgba(94, 96, 206, 0.3)',
               transition: 'all 0.3s ease',
             }}
@@ -70,12 +72,9 @@ export default function About() {
               e.currentTarget.style.background = '#5e60ce';
               e.currentTarget.style.boxShadow = '0 5px 15px rgba(94, 96, 206, 0.3)';
             }}
-            onClick={() => {
-              alert('CV download started!');
-            }}
           >
             Download CV
-          </button>
+          </a>
         </div>
 
         {/* Right Section - Profile Image */}
